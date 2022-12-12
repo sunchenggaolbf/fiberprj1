@@ -1,20 +1,17 @@
 import "./styles.css";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, useFBX } from "@react-three/drei";
+import { Environment, OrbitControls} from "@react-three/drei";
 import { Suspense } from "react";
+import Player from './component/Player'
 
-const Scene = () => {
-  const fbx = useFBX("player.fbx");
 
-  return <primitive object={fbx} scale={0.005} />;
-};
 
 export default function App() {
   return (
     <div className="App">
       <Canvas>
         <Suspense fallback={null}>
-          <Scene />
+          <Player />
           <OrbitControls />
           <Environment preset="sunset" background />
         </Suspense>
