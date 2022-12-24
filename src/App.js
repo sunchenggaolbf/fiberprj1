@@ -4,21 +4,23 @@ import { Environment, OrbitControls, useFBX } from "@react-three/drei";
 import { Suspense } from "react";
 
 const Scene = () => {
-  const fbx = useFBX("Player.fbx");
-  return <primitive object={fbx} position={[-5,0,0]} scale={0.005} />;
-};
-const Scene2 = () => {
-  const fbx = useFBX("Player2.fbx");
+  const model1 = useFBX("Player.fbx");
+  const model2 = useFBX("Player2.fbx");
 
-  return <primitive object={fbx} position={[5,0,0]} scale={0.005} />;
+  return (
+    <>
+      {model1 && <primitive object={model1} position={[-5, 0, 0]} />}
+      {model2 && <primitive object={model2} position={[5, 0, 0]} />}
+    </>
+  );
 };
+
 export default function App() {
   return (
     <div className="App">
       <Canvas>
         <Suspense fallback={null}>
           <Scene />
-          <Scene2 />
           <OrbitControls />
           <Environment preset="sunset" background />
         </Suspense>
